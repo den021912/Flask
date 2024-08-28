@@ -1,0 +1,30 @@
+{% extends "menu.html" %}
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pagename %}
+    <h1>Авторизация пользователя</h1>
+{% endblock %}
+
+{% block page %}
+        <div class='menu'>
+        <blockquote><a href="/">Главная страница</a></blockquote>
+        <blockquote><a href="/games/">Игры</a> </blockquote>
+        <blockquote><a href="/registration/">Регистрация</a> </blockquote>
+        {% if current_user.is_authenticated %}
+            {% if current_user.role == "Admin" %}
+                <blockquote><a href="/admin/">Админ панель</a></blockquote>
+            {% else %}
+            {% endif %}
+        {% else %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block centre_page %}
+    <div class="menu">
+        <h2> Спасибо, за регистрацию </h2>
+    </div>
+{% endblock %}

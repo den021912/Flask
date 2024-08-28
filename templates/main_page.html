@@ -1,0 +1,19 @@
+{% extends "menu.html" %}
+
+{% block pagename %}
+    <h1> Игры </h1>
+{% endblock %}
+
+{% block page %}
+    <div class="menu">
+        {% for game in games_all %}
+            <h2>{{ games.title }}</h2>
+            <p>{{ games.cost }}</p>
+            <p>{{ games.size }}</p>
+            <p>{{ games.description }}</p>
+            <p>{{ games.age_limited }}</p>
+            <p>{{ new.created_at }} </p>
+        {% endfor %}
+
+    </div>
+{% endblock %}

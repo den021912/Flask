@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> Магазин </title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        <h1>Главная страница</h1>
+        {% endblock %}
+    </header>
+
+    <div class="container">
+
+        {% block page %}
+        <div class='menu'>
+            <blockquote><a href="">Главная страница</a></blockquote>
+            <blockquote><a href="/games/">Игры</a> </blockquote>
+            <blockquote><a href="/registration/">Регистрация</a> </blockquote>
+            {% if current_user.is_authenticated %}
+                {% if current_user.role == "Admin" %}
+                    <blockquote><a href="/admin/">Админ панель</a></blockquote>
+                {% else %}
+                {% endif %}
+            {% else %}
+            {% endif %}
+        </div>
+        {% endblock %}
+
+        {% block page %}
+        <div class="menu">
+        </div>
+        {% endblock %}
+
+        {% block button_page %}
+        <div class="button_menu">
+            {% if current_user.is_authenticated %}
+            <a> Привет, {{ current_user.username }}! </a>
+            <div class="button_block">
+                <blockquote><a href="/logout/"><button>Выйти</button></a></blockquote>
+            </div>
+            {% else %}
+                <div class="button_block">
+                <a>Hello, AnonymousUser!</a>
+                <div class="button_block">
+                    <blockquote><a href="/login/"><button>Войти</button></a></blockquote>
+                </div>
+                </div>
+            {% endif %}
+        </div>
+        {% endblock %}
+    </div>
+</body>
+</html>

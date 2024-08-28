@@ -1,0 +1,35 @@
+{% extends "menu.html" %}
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+{% block pagename %}
+    <h1> Игры </h1>
+{% endblock %}
+
+{% block page %}
+    <div class='menu'>
+        <blockquote><a href="/">Главная страница</a></blockquote>
+        <blockquote><a href="/games/"> Игры </a> </blockquote>
+        <blockquote><a href="/registration/">Регистрация</a> </blockquote>
+        {% if current_user.is_authenticated %}
+            {% if current_user.role == "Admin" %}
+                <blockquote><a href="/admin/">Админ панель</a></blockquote>
+            {% else %}
+            {% endif %}
+        {% else %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block page %}
+        <div class="menu">
+            <h2>{{ game.title }}</h2>
+            <p>{{ games.cost }}</p>
+            <p>{{ games.size }}</p>
+            <p>{{ games.description }}</p>
+            <p>{{ games.age_limited }}</p>
+            <p>{{ new.created_at }} </p>
+    </div>
+{% endblock %}
